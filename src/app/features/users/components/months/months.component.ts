@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
-import {IMonth} from '../../user_models';
+import {IMonth} from '../../models/month.model';
 
 @Component({
   selector: 'app-months',

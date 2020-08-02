@@ -5,7 +5,7 @@ import {UsersApiService} from '../../../core/services/users-api.service';
 import {NotificationsService} from '../../../core/services/notifications.service';
 import {NotificationsServiceStub} from '../../../shared/mocks/notificationsServiceStub';
 import {UserApiServiceStub} from '../../../shared/mocks/userApiServiceStub';
-import {IMonth, IUser} from '../user_models';
+import {IMonth, IUser} from '../models/user.models';
 import {HttpErrorResponse} from '@angular/common/http';
 
 const users: IUser[] = [

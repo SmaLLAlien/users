@@ -8,16 +8,20 @@ import {
 import {Observable} from 'rxjs';
 import {SpinnerService} from '../services/spinner.service';
 import {finalize} from 'rxjs/operators';
+import {URLS} from '../../appConfig';
 
 @Injectable()
 export class MainInterceptor implements HttpInterceptor {
 
-  constructor(private spinnerService: SpinnerService) {
-  }
+  constructor(private spinnerService: SpinnerService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     this.spinnerService.show();
-    return next.handle(request).pipe(
+    const modifiedReq = request.clone({
+      url: `${URLS.base}${URLS.users}`
+    });
+
+    return next.handle(modifiedReq).pipe(
       finalize(() => {
         this.spinnerService.hide();
       })

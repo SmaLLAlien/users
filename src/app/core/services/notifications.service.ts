@@ -4,8 +4,7 @@ import {ToastrService} from 'ngx-toastr';
 @Injectable()
 export class NotificationsService {
 
-  constructor(private tostr: ToastrService) {
-  }
+  constructor(private tostr: ToastrService) {}
 
   success(message: string, title: string = null, options = {timeOut: 3000}): void {
     this.tostr.show(message, title, options);

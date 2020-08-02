@@ -1,5 +1,5 @@
 import {of} from 'rxjs';
-import {IUser} from '../../features/users/user_models';
+import {IUser} from '../../features/users/models/user.models';
 
 const users: IUser[] = [
   {

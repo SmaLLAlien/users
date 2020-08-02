@@ -1,7 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {UserComponent} from './user.component';
-import {IUser} from '../../user_models';
+import {IUser} from '../../models/user.models';
 
 const user: IUser = {
   id: '1',

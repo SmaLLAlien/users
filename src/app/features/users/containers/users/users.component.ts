@@ -1,8 +1,9 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
 import {UsersService} from '../../services/users.service';
 import {Observable} from 'rxjs';
-import {IMonth, IUser} from '../../user_models';
-import {map} from 'rxjs/operators';
+import {IUser} from '../../models/user.models';
+import {IMonth} from '../../models/month.model';
+import {map, takeWhile} from 'rxjs/operators';
 
 @Component({
   selector: 'app-users',
@@ -10,15 +11,15 @@ import {map} from 'rxjs/operators';
   styleUrls: ['./users.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class UsersComponent implements OnInit {
+export class UsersComponent implements OnInit, OnDestroy {
   users$: Observable<IUser[]>;
   months$: Observable<IMonth[]>;
   filteredUsers: Observable<IUser[]>;
   isHovered = false;
   isLoaded = false;
+  alive = true;
 
-  constructor(private usersService: UsersService) {
-  }
+  constructor(private usersService: UsersService) {}
 
   ngOnInit(): void {
     this.getUsers();
@@ -26,17 +27,20 @@ export class UsersComponent implements OnInit {
     this.users$ = this.usersService.users$;
   }
 
-  getUsers() {
+  getUsers(): void {
     this.usersService.getUsers()
       .subscribe(() => this.isLoaded = true);
   }
 
-  onHover(monthName: string) {
+  onHover(monthName: string): void {
     this.isHovered = true;
     this.filteredUsers = this.users$.pipe(
-      map(users => {
-        return users.filter(user => user.month === monthName);
-      })
+      takeWhile(() => this.alive),
+      map(users => users.filter(user => user.month === monthName))
     );
+  }
+
+  ngOnDestroy(): void {
+    this.alive = false;
   }
 }

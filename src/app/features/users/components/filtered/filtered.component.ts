@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {IUser} from '../../user_models';
+import {IUser} from '../../models/user.models';
 
 @Component({
   selector: 'app-filtered',
@@ -9,5 +9,4 @@ import {IUser} from '../../user_models';
 })
 export class FilteredComponent {
   @Input() users: IUser[];
-
 }

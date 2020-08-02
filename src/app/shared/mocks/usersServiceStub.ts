@@ -1,5 +1,5 @@
 import {BehaviorSubject, of} from 'rxjs';
-import {IMonth, IUser} from '../../features/users/user_models';
+import {IMonth, IUser} from '../../features/users/models/user.models';
 
 const users: IUser[] = [
   {

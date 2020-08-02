@@ -6,14 +6,11 @@ export class SpinnerService {
   private isLoadingSubject: Subject<boolean> = new Subject<boolean>();
   isLoading = this.isLoadingSubject.asObservable();
 
-  constructor() {
-  }
-
-  show() {
+  show(): void {
     this.isLoadingSubject.next(true);
   }
 
-  hide() {
+  hide(): void {
     this.isLoadingSubject.next(false);
   }
 }

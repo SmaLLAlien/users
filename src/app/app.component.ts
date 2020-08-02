@@ -6,10 +6,9 @@ import {AfterViewInit, Component, Renderer2} from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements AfterViewInit {
-  constructor(private renderer: Renderer2) {
-  }
+  constructor(private renderer: Renderer2) {}
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     const loader = this.renderer.selectRootElement('#loader');
     this.renderer.setStyle(loader, 'display', 'none');
   }
