@@ -1,4 +1,4 @@
-##[DEMO](https://smallalien.github.io/users/users)
+[DEMO](https://smallalien.github.io/users/users)
 
 # Users
 
