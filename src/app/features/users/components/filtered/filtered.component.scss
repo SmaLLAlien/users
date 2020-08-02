@@ -1,0 +1,19 @@
+.users {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  padding: 5px;
+}
+
+.user {
+  width: 200px;
+  margin: 0 20px 20px 20px;
+}
+
+@media all and (max-width: 707px) {
+  .users {
+    justify-content: center;
+  }
+}
